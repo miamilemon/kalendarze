@@ -29,25 +29,26 @@ class MainActivity : AppCompatActivity() {
         przycisk3 = findViewById(R.id.btnEtap2)
 
         calendar.setMinDate(System.currentTimeMillis());
-        calendar.setOnDateChangeListener(OnDateChangeListener { view, year, month, dayOfMonth ->
+        calendar.setOnDateChangeListener(OnDateChangeListener { _, year, month, dayOfMonth ->
             val curDate = dayOfMonth.toString()
             val Year = year.toString()
             val Month = month.toString()
+            przycisk1.setOnClickListener{
+                val data1: Long = (calendar.date)
+                val dateFormatter = DateFormat.getDateInstance(DateFormat.MEDIUM)
+                przycisk1.setText(curDate+"."+Month+"."+Year)
+            }
+            przycisk2.setOnClickListener {
+                val data2: Long = (calendar.date)
+                val dateFormatter = DateFormat.getDateInstance(DateFormat.MEDIUM)
+                przycisk2.setText(curDate+"."+Month+"."+Year)
+            }
+            przycisk3.setOnClickListener {
+                val data3: Long = (calendar.date)
+                val dateFormatter = DateFormat.getDateInstance(DateFormat.MEDIUM)
+                przycisk3.setText(curDate+"."+Month+"."+Year)
+            }
         })
-        przycisk1.setOnClickListener{
-            val data1: Long = (calendar.date)
-            val dateFormatter = DateFormat.getDateInstance(DateFormat.MEDIUM)
-            przycisk1.setText(dateFormatter.format(data1))
-        }
-        przycisk2.setOnClickListener {
-            val data2: Long = (calendar.date)
-            val dateFormatter = DateFormat.getDateInstance(DateFormat.MEDIUM)
-            przycisk2.setText(dateFormatter.format(data2))
-        }
-        przycisk3.setOnClickListener {
-            val data3: Long = (calendar.date)
-            val dateFormatter = DateFormat.getDateInstance(DateFormat.MEDIUM)
-            przycisk3.setText(dateFormatter.format(data3))
-        }
+
     }
 }
