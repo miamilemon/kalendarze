@@ -9,8 +9,8 @@ import java.time.LocalDate
 import java.util.*
 import java.util.Calendar.getInstance
 import android.widget.CalendarView.OnDateChangeListener
-
-
+import android.widget.SeekBar
+import android.widget.TextView
 
 
 class MainActivity : AppCompatActivity() {
@@ -18,6 +18,8 @@ class MainActivity : AppCompatActivity() {
     lateinit var przycisk1: Button
     lateinit var przycisk2: Button
     lateinit var przycisk3: Button
+    lateinit var suwak: SeekBar
+    lateinit var suwakTxt: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +29,8 @@ class MainActivity : AppCompatActivity() {
         przycisk1 = findViewById(R.id.btnEtap1Rozp)
         przycisk2 = findViewById(R.id.btnEtap1Zak)
         przycisk3 = findViewById(R.id.btnEtap2)
+        suwak = findViewById(R.id.seekBar)
+        suwakTxt = findViewById(R.id.textSuwaka)
 
         calendar.setMinDate(System.currentTimeMillis());
         calendar.setOnDateChangeListener(OnDateChangeListener { _, year, month, dayOfMonth ->
@@ -49,6 +53,20 @@ class MainActivity : AppCompatActivity() {
                 przycisk3.setText(curDate+"."+Month+"."+Year)
             }
         })
+        /*suwak.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar, progress: Int,fromUser: Boolean) {
+                var a = (progress.toFloat())
+                a=a/10
+                suwakTxt.text = a.toString()
+            }
+
+            override fun onStartTrackingTouch(p0: SeekBar?) {
+            }
+
+            override fun onStopTrackingTouch(p0: SeekBar?) {
+            }
+
+        })*/
 
     }
 }
